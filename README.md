@@ -20,15 +20,17 @@ This BVCN topic will cover:
 
 
 # Lesson 1
-### Title: 
+### Title: Introduction to R & Connect to RStudio Cloud
+
 Goals
-*
-*
-*
+* Introduce the R language
+* [Sign up and connect to RStudio Cloud](https://rstudio.cloud)
+* Copy and move your first R lesson to your RStudio Cloud workspace
+* Learn basic operators and R syntax
 
-Watch tutorial:
+Watch tutorial: [Link to YouTube video]()
 
-Follow tutorial:
+
 
 
 # Lesson 2
