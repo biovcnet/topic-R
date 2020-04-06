@@ -28,11 +28,14 @@ Goals:
 * Copy and move your first R lesson to your RStudio Cloud workspace
 * Learn basic operators and R syntax   
 
-**Lesson 1 agenda**
+## **Lesson 1 agenda**
+**Ahead of time**
 1. Sign up with a free [RStudio Cloud](https://rstudio.cloud) account
 2. Find the provided link from Slack or the introduction email to grant you access to the BVCN R lesson workspace in RStudio.
-3. Watch this tutorial intro to RStudio and how we will navigate lessons [Link to YouTube video]()
-4. Work through basic functions in the *Lesson01* R project
+3. Watch this tutorial intro to RStudio and how we will navigate lessons [Link to YouTube video](https://www.youtube.com/watch?v=kicRl5UNE64&feature=youtu.be)
+**Live lesson**
+4. Review RStudio navigation and what was covered in the tutorial video
+5. Work through basic functions in the *Lesson01* R project
 
 **Orientation in RStudio Cloud**
 * _Workspaces_: This is your own personal workspace or “sandbox”. You can make them private or public. The BVCN lessons will be listed each week in the BVCN-R workspace.
