@@ -1,12 +1,11 @@
 # TOPIC: R
-A repository for the lessons and tutorials for the R TOPIC channel of the [BVCN](https://biovcnet.github.io/)
+A repository for the lessons and tutorials for the R TOPIC channel of the [BVCN](https://biovcnet.github.io/).   
+Each week we will debut a new lesson with a video tutorial and a set time for a live demonstration. Additionally, we will work to hold **R Office** hours each week to review the material, go into more detail on what we've learned, and try to answer any questions you may have.
 
 
 ## Prerequisites
-*
-*
-* [A working Unix environment](https://github.com/biovcnet/biovcnet.github.io/wiki/1.-Setting-up-a-local-Linux-(or-Unix)-environment)
-* [Experience with the command line](https://github.com/biovcnet/biovcnet.github.io/wiki/2.-Using-the-Command-line)
+* Access to browser window, RStudio Cloud account
+* (_Optional_)[Experience with the command line](https://github.com/biovcnet/biovcnet.github.io/wiki/2.-Using-the-Command-line)
 
 # Overview
 This BVCN topic will cover:
@@ -22,14 +21,22 @@ This BVCN topic will cover:
 # Lesson 1
 ### Title: Introduction to R & Connect to RStudio Cloud
 
-Goals
+Goals:
 * Introduce the R language
-* [Sign up and connect to RStudio Cloud](https://rstudio.cloud)
+* [Connect to RStudio Cloud](https://rstudio.cloud)
 * Copy and move your first R lesson to your RStudio Cloud workspace
-* Learn basic operators and R syntax
+* Learn basic operators and R syntax   
 
-Watch tutorial: [Link to YouTube video]()
+**Lesson 1 agenda**
+1. Sign up with a free [RStudio Cloud](https://rstudio.cloud) account
+2. Find the provided link from Slack or the introduction email to grant you access to the BVCN R lesson workspace in RStudio.
+3. Watch this tutorial intro to RStudio and how we will navigate lessons [Link to YouTube video]()
+4. Work through basic functions in the *Lesson01* R project
 
+**Orientation in RStudio Cloud**
+* _Workspaces_: This is your own personal workspace or “sandbox”. You can make them private or public. The BVCN lessons will be listed each week in the BVCN-R workspace.
+* _Projects_: This is a list of R Projects that you can open in RStudio Cloud. Each week, you can copy the lessons from the shared BCVN Workspace to your personal list of projects
+* To execute a command from an R script (which will be sent to the Rconsole), on a **Mac**: press COMMAND+ENTER and on a **PC** it is CTRL+ENTER
 
 
 
