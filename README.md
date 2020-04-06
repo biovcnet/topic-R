@@ -2,6 +2,7 @@
 A repository for the lessons and tutorials for the R TOPIC channel of the [BVCN](https://biovcnet.github.io/).   
 Each week we will debut a new lesson with a video tutorial and a set time for a live demonstration. Additionally, we will work to hold **R Office** hours each week to review the material, go into more detail on what we've learned, and try to answer any questions you may have.
 
+For a full list of resources also see the [R topic BVCN Wiki page](https://github.com/biovcnet/biovcnet.github.io/wiki/TOPIC:-R).
 
 ## Prerequisites
 * Access to browser window, RStudio Cloud account
