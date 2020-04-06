@@ -38,6 +38,9 @@ Goals:
 * _Projects_: This is a list of R Projects that you can open in RStudio Cloud. Each week, you can copy the lessons from the shared BCVN Workspace to your personal list of projects
 * To execute a command from an R script (which will be sent to the Rconsole), on a **Mac**: press COMMAND+ENTER and on a **PC** it is CTRL+ENTER
 
+**What is RStudio Cloud?**
+RStudio itself is also an application that can be installed on your computer that is an easy to use interface for writing and executing R code. RStudio Cloud is a cloud-based platform to run RStudio. It circumvents the installation of R on your local computer, to minimize any issues and frustrations that may arise when learning and accessing R remotely. Another reason we are using Rstudio Cloud is that it will be a streamlined way for us to share code with you as we venture into learning the R language.
+
 
 
 # Lesson 2
