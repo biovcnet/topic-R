@@ -32,7 +32,7 @@ Goals:
 **Ahead of time**
 1. Sign up with a free [RStudio Cloud](https://rstudio.cloud) account
 2. Find the provided link from Slack or the introduction email to grant you access to the BVCN R lesson workspace in RStudio.
-3. Watch this tutorial intro to RStudio and how we will navigate lessons [Link to YouTube video](https://www.youtube.com/watch?v=kicRl5UNE64&feature=youtu.be)
+3. Watch this tutorial intro to RStudio and how we will navigate lessons [Link to YouTube video](https://youtu.be/kicRl5UNE64)
 **Live lesson**
 4. Review RStudio navigation and what was covered in the tutorial video
 5. Work through basic functions in the *Lesson01* R project
