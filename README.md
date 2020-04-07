@@ -21,7 +21,7 @@ This BVCN topic will cover:
 
 # Lesson 1
 ### Title: Introduction to R & Connect to RStudio Cloud
-
+_Instructors_: Sarah Hu, Liz Suter, Alexis Marshall
 Goals:
 * Introduce the R language
 * [Connect to RStudio Cloud](https://rstudio.cloud)
