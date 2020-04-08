@@ -21,7 +21,8 @@ This BVCN topic will cover:
 
 # Lesson 1
 ### Title: Introduction to R & Connect to RStudio Cloud
-_Instructors_: Sarah Hu, Liz Suter, Alexis Marshall
+_Instructors_: Sarah Hu, Liz Suter, Alexis Marshall    
+
 Goals:
 * Introduce the R language
 * [Connect to RStudio Cloud](https://rstudio.cloud)
@@ -32,12 +33,13 @@ Goals:
 **Ahead of time**
 1. Sign up with a free [RStudio Cloud](https://rstudio.cloud) account
 2. Find the provided link from Slack or the introduction email to grant you access to the BVCN R lesson workspace in RStudio.
-3. Watch this tutorial intro to RStudio and how we will navigate lessons [Link to YouTube video](https://youtu.be/kicRl5UNE64)
+3. Watch this tutorial intro to RStudio and how we will navigate lessons [Link to YouTube video](https://youtu.be/kicRl5UNE64)    
+
 **Live lesson**
 4. Review RStudio navigation and what was covered in the tutorial video
 5. Work through basic functions in the *Lesson01* R project
 
-**Orientation in RStudio Cloud**
+**_Orientation in RStudio Cloud_**
 * _Workspaces_: This is your own personal workspace or “sandbox”. You can make them private or public. The BVCN lessons will be listed each week in the BVCN-R workspace.
 * _Projects_: This is a list of R Projects that you can open in RStudio Cloud. Each week, you can copy the lessons from the shared BCVN Workspace to your personal list of projects
 * To execute a command from an R script (which will be sent to the Rconsole), on a **Mac**: press COMMAND+ENTER and on a **PC** it is CTRL+ENTER
@@ -45,7 +47,7 @@ Goals:
 **What is RStudio Cloud?**
 RStudio itself is also an application that can be installed on your computer that is an easy to use interface for writing and executing R code. RStudio Cloud is a cloud-based platform to run RStudio. It circumvents the installation of R on your local computer, to minimize any issues and frustrations that may arise when learning and accessing R remotely. Another reason we are using Rstudio Cloud is that it will be a streamlined way for us to share code with you as we venture into learning the R language.
 
-
+***
 
 # Lesson 2
 ### Title: 
