@@ -37,7 +37,11 @@ Goals:
 
 **Live lesson**
 4. Review RStudio navigation and what was covered in the tutorial video
-5. Work through basic functions in the *Lesson01* R project
+5. Work through basic functions in the *Lesson01* R project  
+
+
+[Link to live Lesson 1 recording](https://www.youtube.com/watch?v=u6vgWyD351g)
+ 
 
 **_Orientation in RStudio Cloud_**
 * _Workspaces_: This is your own personal workspace or “sandbox”. You can make them private or public. The BVCN lessons will be listed each week in the BVCN-R workspace.
