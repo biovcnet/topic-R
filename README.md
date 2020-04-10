@@ -53,14 +53,19 @@ RStudio itself is also an application that can be installed on your computer tha
 
 ***
 
-# Lesson 2
-### Title: 
-Goals
+# Lesson 02
+## BVCN
+# Title:
+**Instructors**: Ella
+Goal: In this lesson we'll see how to manipulate tables in R just like you would in Excel. We will learn how to sort a table, filter it, transpose it, change column names and merge it with another table.   
 
-*
-*
-*
+**Agenda**
+* View this recorded lecture for lesson-02 [Link to Youtube recording]()
+* Basic data table manipulation
+* Import test data into R from .csv format
+* Applying basic mathematical functions to a data table
+* Merge data table together
 
-Watch tutorial:
+_Take home messages_
+* In Excel you are working on a single document and modifying it, while in R, the best practice when transforming data is to create a new object in R. This way you have traces of your previous table. This allows for a more reproducible product and reduces those errors that happen when you copy and paste cells in Excel.
 
-Follow tutorial:
