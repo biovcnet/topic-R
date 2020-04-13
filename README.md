@@ -54,8 +54,7 @@ RStudio itself is also an application that can be installed on your computer tha
 ***
 
 # Lesson 02
-### BVCN
-## Title:
+### Title: Dealing with data frames
 **Instructors**: Ella Sieradzki
 
 
