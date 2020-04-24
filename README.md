@@ -76,10 +76,12 @@ _Take home messages_
 ### Title: Introduction to Tidyverse
 **Instructors**: Sarah Hu
 
+[Link to live lesson](https://www.youtube.com/watch?v=_VVdPsnTrO4&feature=youtu.be)
+
 Goal: Continue learning how to manipulate data frames in R, but use the functions and syntax available through tidyverse.   
 
 **Agenda**
-* Link to recorded intro to the lesson
+* View the recorded lecture for lesson-03 [Link to Youtube recording](https://www.youtube.com/watch?v=Oj0yRXrvm2Q&feature=youtu.be)
 * Overview of data frames, matrices, and tibbles
 * Change column headers and reorder columns in base R
 * Repeat column renaming and reorder in tidyverse
