@@ -1,0 +1,147 @@
+---
+title: "Week 3 notes Phil L"
+output: html_notebook
+---
+
+The `Luciferase cell assay` dataset is a type of R object called a *dataframe* (in tidyverse, another name for dataframes are *tibbles*). It looks like a typical table, but in R, it has several important features:
+
+1. Dataframe is a set of columns (which are vectors)
+2. All the columns are the same length.
+3. The content of each column is of the same type  e.g. Factor, integer, numerical etc. 
+
+
+First let's load tidyverse - we will be usig that today - and then take a look at our data
+```{r}
+library(tidyverse)
+cell_assay <- read.csv("Luciferase_cell_assay.csv")
+head(cell_assay)### show first 10 rows of data
+
+```
+
+It's always important to check your data after inputting. There are many ways to do this
+```{r}
+class(cell_assay) # identifies as dataframe/tibble or matrix
+```
+
+```{r}
+str(cell_assay) # much more detailed, gives type of content in each column
+```
+
+```{r}
+glimpse(cell_assay) # details but more glanceable than str
+```
+
+```{r}
+library(skimr) # a package to get a high-level overview of an object
+skim(cell_assay)
+```
+
+### Missing data
+
+R is one of the few programming languages that implicitly accomodates and deals with missing data. Your data will be messy and missing data will be one of your issues. In fact, in almost any large data analysis project, you will spend most of the time of cleaning up and tidying up the data so that downstream analyses are possible.
+
+Did you notice that our data has lots of missing values? They are marked by a special word `NA`.
+
+```{r}
+view(cell_assay) ### open a new window to scan through whole dataset
+```
+
+
+Missing data make many calculations impossible, because `NA` "contaminate" downstream calculations. For example - how much is 4*NA?
+
+```{r}
+4 * NA
+```
+When we try and do downstream calculations that include `NA` 
+```{r}
+aa <- c(1, 2, NA, 4)
+
+aa * 50
+```
+
+There are several functions in R to deal with missing data - but you must understand that removing data has consequences for downstream analyses  - is it truly `missing at random` (more on this subject at the end of this lesson)? If not it can be problematic for your data 
+
+1. If you want to simply remove every row where at least one value is missing, use `drop_na`.
+
+```{r}
+cell_assay_NA_removed <- drop_na(cell_assay)
+
+```
+
+This might be fine if we know exactly where our NAs are and we are happy with losing that much of our dataset
+But if we want to tackle this with a little more finesse, how about removing only those NAs from a specific column - Value?
+
+```{r}
+filter(cell_assay, Value == NA) # doesn't work
+filter(cell_assay, Value == "NA") # doesn't work
+```
+
+Why not? Is the function wrong? 
+
+```{r}
+Aag2_cell_assay <- filter(cell_assay, Cell.type == "Aag2") ###nope this seems fine! 
+```
+
+NA is a special word in R, it's not a character vector
+You need to use function `is.na` to determine which rows have missing data and then filter them out. Rstudio may even have already prompted you to do just this
+
+```{r}
+filter(cell_assay, is.na(Value)) # this keeps the rows with missing data
+```
+
+Question: do you know how to reverse this statement to only keep the rows that are *not* missing?
+
+```{r}
+# Answer
+filter(cell_assay, !is.na(Value))
+```
+
+# Imputation
+Indeed there are lots of ways of dealing with NA data. 
+
+## Imputing with zeros
+We could use mutate to convert any numeric factors from NA to 0 - but this should be treated with extreme caution `0` and missingd data `NA` are not the same thing.
+
+The column value has lots of NAs in it. Lets replace those with zeros.
+
+```{r}
+cell_assay_zeros_for_nas_all <-cell_assay %>%
+  mutate(Value = ifelse(is.na(Value), 0, Value))
+cell_assay_zeros_for_nas_all
+```
+
+Another way of doing the above
+
+```{r}
+cell_assay_zeros_for_nas2 <- cell_assay %>%
+  replace_na(list(Value = 0))
+cell_assay_zeros_for_nas2
+```
+
+We can do this for every column instead of just the value column, with slightly more complex syntax.
+```{r}
+cell_assay_zeros_for_nas_all <- cell_assay %>%
+  mutate_if(is.numeric, funs(ifelse(is.na(.), 0, .)))
+cell_assay_zeros_for_nas_all
+```
+
+Observe here, that the data in Gene.origin.1 are still all NA, because 0 is not a legitimate value for a factor.
+
+## Imputing with median values
+
+Just like we filled in with zeros above, we can also fill in with mean or median values. Lets do this for just the values column again.
+
+```{r}
+cell_assay %>%
+  mutate(Value = ifelse(is.na(Value), median(na.omit(Value)), Value))
+```
+
+## Multiple imputation
+A problem with imputing with medians or means, is that it tends to make the standard deviations look smaller. One way around this is to fill in with random data that have characteristics like your data. A problem with this approach is that your results end up depending on which random values you fill in. One thing people sometimes do is fill in with different random data several times, run their statistics on each imputed data frame, and then perform their analysis on each. 
+
+The code to do these things are technical, and so we won't get into them here. If this is a problem for you though, consider the `mice` and `amelia` packages.
+
+# Data missing not at random
+Data that are missing not-at random are ones where the missingness of a category relates to some parameters. One good example is that most oceanographic time series measurments tend to show up as missing when the weather is bad. Treating these as random will likely bias downstream statistics. Fortunately there are lots of good statistics out there that let you deal with data with NA values that might not be random. They are beyond the scope of this lesson.
+
+When we look at linear models  - we will revisit missing data 
