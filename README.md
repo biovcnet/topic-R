@@ -71,6 +71,7 @@ Goal: In this lesson we'll see how to manipulate tables in R just like you would
 _Take home messages_
 * In Excel you are working on a single document and modifying it, while in R, the best practice when transforming data is to create a new object in R. This way you have traces of your previous table. This allows for a more reproducible product and reduces those errors that happen when you copy and paste cells in Excel.
 
+***
 
 # Lesson 3
 ### Title: Introduction to Tidyverse
@@ -90,7 +91,7 @@ Goal: Continue learning how to manipulate data frames in R, but use the function
 * Separating (parsing) column header into multiple columns
 * Introduce ```mutate()``` and ```summarise()``` to calculate averages and relative abundance
 
-
+***
 
 # Lesson 5
 ### Title: Introduction to plotting
