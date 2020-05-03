@@ -89,3 +89,20 @@ Goal: Continue learning how to manipulate data frames in R, but use the function
 * Wide vs. long format data
 * Separating (parsing) column header into multiple columns
 * Introduce ```mutate()``` and ```summarise()``` to calculate averages and relative abundance
+
+
+
+# Lesson 5
+### Title: Introduction to plotting
+**Instructors**: Ella Sieradzki
+
+[Link to live lesson]()
+
+Goal: Learn how to plot an XY scatter in base R and ggplot2 and become familiar with graphic parameters
+
+**Agenda**
+* Simple plotting of the Iris dataset
+* Color points by series/group
+* Adding margins and placing the legend outside of the plot
+* par - the hub of graphic parameters
+* Trendlines
