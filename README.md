@@ -93,6 +93,18 @@ Goal: Continue learning how to manipulate data frames in R, but use the function
 
 ***
 
+# Lesson 4
+### Title: Dealing with NAs in your data
+**Instructors**: Philip Leftwich
+
+Goal: Techniques and tools for dealing with NAs in your data set. And how to find them!
+
+[Link to live lesson](https://www.youtube.com/watch?v=iTS5OEqt6M8)
+
+
+***
+
+
 # Lesson 5
 ### Title: Introduction to plotting
 **Instructors**: Ella Sieradzki
