@@ -109,7 +109,7 @@ Goal: Techniques and tools for dealing with NAs in your data set. And how to fin
 ### Title: Introduction to plotting
 **Instructors**: Ella Sieradzki
 
-[Link to live lesson]()
+[Link to live lesson](https://www.youtube.com/watch?v=uv972TDRflI)
 
 Goal: Learn how to plot an XY scatter in base R and ggplot2 and become familiar with graphic parameters
 
