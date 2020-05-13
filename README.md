@@ -104,7 +104,6 @@ Goal: Techniques and tools for dealing with NAs in your data set. And how to fin
 
 ***
 
-
 # Lesson 5
 ### Title: Introduction to plotting
 **Instructors**: Ella Sieradzki
@@ -118,4 +117,19 @@ Goal: Learn how to plot an XY scatter in base R and ggplot2 and become familiar 
 * Color points by series/group
 * Adding margins and placing the legend outside of the plot
 * par - the hub of graphic parameters
-* Trendlines
+* Trendlines  
+
+***
+
+# Lesson 6
+### Title: Plotting & data wrangling Part II
+**Instructors**: Sarah Hu & Philip Leftwich
+
+Goal: Go over box plots and bar plots in ggplot. Making use of tidyverse data wrangling and exploring ggplot2 features.
+
+**Agenda**
+* ggplot2 bar plots and box plots
+* Discussion of when a box plot vs. bar plot is more appropriate
+* Play around with additional features for making figures: ggplot2 themes, adding colors for factors, multi-panel plots, and more!
+* Import a test ASV table dataset and use ggplot to make a taxonomy relative abundance bar plot
+
