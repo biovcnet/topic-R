@@ -125,6 +125,8 @@ Goal: Learn how to plot an XY scatter in base R and ggplot2 and become familiar 
 ### Title: Plotting & data wrangling Part II
 **Instructors**: Sarah Hu & Philip Leftwich
 
+[Link to live lesson](https://www.youtube.com/watch?v=Ot8helWh2uM&feature=youtu.be)   
+  
 Goal: Go over box plots and bar plots in ggplot. Making use of tidyverse data wrangling and exploring ggplot2 features.
 
 **Agenda**
