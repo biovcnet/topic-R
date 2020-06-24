@@ -135,3 +135,23 @@ Goal: Go over box plots and bar plots in ggplot. Making use of tidyverse data wr
 * Play around with additional features for making figures: ggplot2 themes, adding colors for factors, multi-panel plots, and more!
 * Import a test ASV table dataset and use ggplot to make a taxonomy relative abundance bar plot
 
+# Lesson 7 (I & II)
+### Title: Correlations and linear models
+**Instructors**: Jacob Cram
+
+* [Part I](https://youtu.be/_23Dw9klihY)
+
+* [Part II](https://youtu.be/NHkTz8coIco)
+
+***
+# Lesson 8
+### Title: Ordinations I
+**Instructors**: Elizabeth Suter
+
+* Amplicon _crossover_ tutorial, [see *topic-amplicons* for more](https://github.com/biovcnet/topic-amplicons). Using the output from qiime2 analysis
+* Import ASV table into _phyloseq_
+* Explore functionality of phyloseq: making tree, re-rooting tree
+* Explore distribution of taxa
+* Ordinations with phyloseq: PCoA, weighted UniFrac PCoA, NMDS
+
+[Link to video]()
