@@ -150,8 +150,7 @@ Goal: Go over box plots and bar plots in ggplot. Making use of tidyverse data wr
 
 * Amplicon _crossover_ tutorial, [see *topic-amplicons* for more](https://github.com/biovcnet/topic-amplicons). Using the output from qiime2 analysis
 * Import ASV table into _phyloseq_
-* Explore functionality of phyloseq: making tree, re-rooting tree
-* Explore distribution of taxa
+* Explore functionality of phyloseq: making tree, re-rooting tree, bar plot of taxa
 * Ordinations with phyloseq: PCoA, weighted UniFrac PCoA, NMDS
 
 [Link to video]()
