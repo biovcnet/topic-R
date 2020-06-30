@@ -144,7 +144,7 @@ Goal: Go over box plots and bar plots in ggplot. Making use of tidyverse data wr
 * [Part II](https://youtu.be/NHkTz8coIco)
 
 ***
-# Lesson 8
+# Lesson 8a
 ### Title: Ordinations I
 **Instructors**: Elizabeth Suter
 
@@ -153,4 +153,19 @@ Goal: Go over box plots and bar plots in ggplot. Making use of tidyverse data wr
 * Explore functionality of phyloseq: making tree, re-rooting tree, bar plot of taxa
 * Ordinations with phyloseq: PCoA, weighted UniFrac PCoA, NMDS
 
-[Link to video]()
+[Link to video](https://www.youtube.com/watch?v=OHIL1TDLLt0&feature=youtu.be)  
+_This is a cross over lesson with Amplicon lesson 5a_
+
+***
+# Lesson 8b
+### Title: Ordinations II
+**Instructors**: Sarah Hu
+
+* Discussion of compositional data, evidence of compositionality in tag-sequence data
+* Data transformations: log-ratio transformations, Jaccard, Euclidean
+* Screeplots, diagnosing how many dimensions are appropriate for visualizing your data
+* PCA, PCoA, NMDS plots (2D and 3D)
+
+
+
+
