@@ -104,7 +104,6 @@ Goal: Techniques and tools for dealing with NAs in your data set. And how to fin
 
 ***
 
-
 # Lesson 5
 ### Title: Introduction to plotting
 **Instructors**: Ella Sieradzki
@@ -118,4 +117,55 @@ Goal: Learn how to plot an XY scatter in base R and ggplot2 and become familiar 
 * Color points by series/group
 * Adding margins and placing the legend outside of the plot
 * par - the hub of graphic parameters
-* Trendlines
+* Trendlines  
+
+***
+
+# Lesson 6
+### Title: Plotting & data wrangling Part II
+**Instructors**: Sarah Hu & Philip Leftwich
+
+[Link to live lesson](https://www.youtube.com/watch?v=Ot8helWh2uM&feature=youtu.be)   
+  
+Goal: Go over box plots and bar plots in ggplot. Making use of tidyverse data wrangling and exploring ggplot2 features.
+
+**Agenda**
+* ggplot2 bar plots and box plots
+* Discussion of when a box plot vs. bar plot is more appropriate
+* Play around with additional features for making figures: ggplot2 themes, adding colors for factors, multi-panel plots, and more!
+* Import a test ASV table dataset and use ggplot to make a taxonomy relative abundance bar plot
+
+# Lesson 7 (I & II)
+### Title: Correlations and linear models
+**Instructors**: Jacob Cram
+
+* [Part I](https://youtu.be/_23Dw9klihY)
+
+* [Part II](https://youtu.be/NHkTz8coIco)
+
+***
+# Lesson 8a
+### Title: Ordinations I
+**Instructors**: Elizabeth Suter
+
+* Amplicon _crossover_ tutorial, [see *topic-amplicons* for more](https://github.com/biovcnet/topic-amplicons). Using the output from qiime2 analysis
+* Import ASV table into _phyloseq_
+* Explore functionality of phyloseq: making tree, re-rooting tree, bar plot of taxa
+* Ordinations with phyloseq: PCoA, weighted UniFrac PCoA, NMDS
+
+[Link to video](https://www.youtube.com/watch?v=OHIL1TDLLt0&feature=youtu.be)  
+_This is a cross over lesson with Amplicon lesson 5a_
+
+***
+# Lesson 8b
+### Title: Ordinations II
+**Instructors**: Sarah Hu
+
+* Discussion of compositional data, evidence of compositionality in tag-sequence data
+* Data transformations: log-ratio transformations, Jaccard, Euclidean
+* Screeplots, diagnosing how many dimensions are appropriate for visualizing your data
+* PCA, PCoA, NMDS plots (2D and 3D)
+
+
+
+

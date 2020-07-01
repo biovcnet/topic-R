@@ -1,0 +1,230 @@
+---
+title: "Lesson 8- Ordinations I"
+author: "Liz Suter"
+date: "6/24/2020"
+---
+
+
+Install and load packages
+
+```{r}
+# install.packages(c("ape", "data.table", "magrittr", "tidyverse"))
+# 
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#     install.packages("BiocManager")
+# 
+# BiocManager::install("phyloseq")
+
+library(tidyverse)
+library(phyloseq)
+library(ape)
+```
+
+
+Import the "cleaned up" R data object from lesson 4 of amplicons
+
+```{r}
+load("cleanedfiles.RData")
+```
+
+
+Import the metadata associated with the samples
+
+```{r}
+sample_info_tab<-read_tsv(url("https://raw.githubusercontent.com/biovcnet/amplicons-lesson-3-repo/master/qiime2_wd/sample_info.tsv"))
+
+# Also delete the row with the QIIME2 category codes
+sample_info_tab<- sample_info_tab[-c(1),]
+
+
+```
+
+The taxonomy in the taxonomy table is retained in one column and the different levels are separated by underscore, eg:
+```{r}
+head(taxonomy_no_contam)
+```
+
+We want to move each taxonomic level to its own column by removing the ";D_#_" using regular expressions (see this [cheatsheet](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf) about regexp)
+
+```{r}
+taxonomy <-  taxonomy_no_contam %>%
+  mutate(taxonomy=str_replace_all(string=Taxon, pattern="D_\\d*\\__", replacement="")) %>%
+  mutate(taxonomy=str_replace_all(string=taxonomy, pattern=";$", replacement="")) %>%
+  separate(taxonomy, into=c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus","Species"), sep=";") %>%
+  select (-Taxon, -Confidence) %>%
+  column_to_rownames(var = 'Feature ID') 
+
+head(taxonomy)
+
+```
+
+
+
+Here we will do ordinations using the phyloseq package, which first requires making phyloseq objects out of each of our input data tables (in the last tutorial, I imported the tree using phyloseq so it is already a phyloseq object)
+
+```{r}
+ASV	=	otu_table(data.frame(count_table_hellinger), taxa_are_rows =  TRUE)
+TAX	=	tax_table(as.matrix(taxonomy))
+META	=	sample_data(data.frame(sample_info_tab, row.names = sample_info_tab$`sample-id`))
+```
+
+First check that the inputs are in compatible formats by checking for ASV names with the phyloseq function, taxa_names
+```{r}
+head(taxa_names(TAX))
+head(taxa_names(ASV))
+head(taxa_names(tree_no_contam))
+```
+
+
+And check sample names were also detected
+```{r}
+head(sample_names(ASV))
+head(sample_names(META))
+```
+
+
+
+Make one phyloseq object, which contains all 4 objects:
+```{r}
+ps <- phyloseq(ASV,	TAX,	META, tree_no_contam)
+```
+
+Check some features of the phyloseq object
+
+```{r}
+rank_names(ps)
+
+unique(tax_table(ps)[, "Kingdom"])
+
+table(tax_table(ps)[, "Kingdom"], exclude = NULL)
+```
+
+
+Filter out those ambigious Kingdom annotations
+```{r}
+ps <- subset_taxa(ps, !is.na(Kingdom) & !Kingdom %in% c("Unassigned", "Eukaryota"))
+
+table(tax_table(ps)[, "Kingdom"], exclude = NULL)
+```
+
+Check out the phyla names
+```{r}
+table(tax_table(ps)[, "Phylum"], exclude = NULL)
+
+```
+
+
+Filter out any with "NA" as phylum. There are also some very low abundance phyla here. I am going to filter these out, as they could influence the perceived differences in sample types. I am taking out any phyla with an abundance of 1 or 2: 
+
+```{r}
+ps <- subset_taxa(ps, !is.na(Phylum) & !Phylum %in% c("", "Margulisbacteria", "Zixibacteria", "Epsilonbacteraeota", "Spirochaetes", "Lentisphaerae", "Poribacteria"))
+
+table(tax_table(ps)[, "Phylum"], exclude = NULL)
+```
+
+Re-root tree (from experience, I have had to do this because you may have removed the root of your tree when pruning). 
+(I found this handy function from [here](https://john-quensen.com/r/unifrac-and-tree-roots/) which picks the longest branch to root from). There is also a compatibilty issue between the type of tree calculated by QIIME and the one expected by phyloseq, so we have to change that format as well (see [here](https://github.com/joey711/phyloseq/issues/936) for discussion)
+```{r}
+# first define function from link above to find furthest outgroup
+pick_new_outgroup <- function(tree.unrooted){
+require("magrittr")
+require("data.table")
+require("ape") # ape::Ntip
+# tablify parts of tree that we need.
+treeDT <- 
+     cbind(
+         data.table(tree.unrooted$edge),
+         data.table(length = tree.unrooted$edge.length)
+     )[1:Ntip(tree.unrooted)] %>% 
+ cbind(data.table(id = tree.unrooted$tip.label))
+ # Take the longest terminal branch as outgroup
+ new.outgroup <- treeDT[which.max(length)]$id
+ return(new.outgroup) }
+
+# then run on my phyloseq tree
+my.tree <- phy_tree(tree_no_contam)
+out.group <- pick_new_outgroup(my.tree)
+out.group
+
+# Then use this outgroup to root the tree
+new.tree1 <- ape::root(my.tree, outgroup=out.group, resolve.root=TRUE)
+
+
+# and convert to dichotomy tree
+new.tree2 <- ape::multi2di(new.tree1)
+phy_tree(ps) <- new.tree2
+phy_tree(ps)
+
+```
+
+
+
+We can get more deeply into plotting in another lesson but for now let's check overall how the phyla are distributed among samples. Phyloseq makes this easy
+
+
+```{r}
+# First aglomerate the ASVs at the phylum level using the phyloseq function, tax_glom
+phylumGlommed = tax_glom(ps, "Phylum")
+# and plot
+plot_bar(phylumGlommed, x = "Sample", fill = "Phylum")
+```
+
+
+You can see there are a lot of Proteobacteria and also Thaumarchaeota, similar to Happy Belly. I didn't do many prefiltering steps or re-arranging of the data table, so there is more to be done here. And remember, this OTU table is already tranformed, so it is really just a first glance. We can get more into appropriate plotting, etc. in another lesson.
+
+
+**Finally we are ready to try some ordinations**
+
+What is an ordination?
+*Ordination is a collective term for multivariate techniques which summarize a multidimensional dataset in such a way that when it is projected onto a low dimensional space, any intrinsic pattern the data may possess becomes apparent upon visual inspection* (Pielou, 1984).
+
+The first one to try here will be a **principal coordinate analysis (PCoA)**, PCoA tries to represent the distance between objects by projecting their dissimilarity into a 2- or 3-D (Euclidean) space. We will using the "bray" method (Bray-Curtis) to calculate the dissimilarity matrix. You can build the dissimilarity method directly into the PCoA calculation, but first let's do it on it's own to check what the matrix looks like:
+```{r}
+ps_dist <- distance(ps, method = "bray") 
+ps_dist
+```
+
+Next plot the PCoA
+```{r}
+out.pcoa <- ordinate(ps, method = "PCoA", distance = "bray")
+pcoa_plot = plot_ordination(ps, out.pcoa, color ="char", shape = "type") +
+  geom_point(size = 3) 
+pcoa_plot
+```
+
+Each PCoA is associated with eigenvectors and eigenvalues. This is my simplified ecologists understanding of this: Each data matrix (like a dissimilarity matrix) has many, many dimensions, which cannot be well represented in a 2D or 3D coordinate system. But we can rotate the coordinates of this data projection into a new coordinate system, without changing the positions of the points relative to each other. The PCoA calculation attempts to rotate the new coordinates in a way such that much of the varibility can be represented by as few axes as possible. In the new coordinate system, each axis, or eigenvector, is associated with its own eigenvalue. The eigenvalue is a scalar value that represents how much varibility can be explained by that axis.
+
+Phyloseq already told us that the two first axes above explain 29.9% (13.1+16.8) of the variability in the entire dataset. The first two axes are plotted with equal lengths but this is not a fair way of representing this, as the first axis has a larger Eigenvalue. There you can scale the axes according to the size of the eigenvalues (I got this idea from [Bioconductor](https://bioconductor.org/help/course-materials/2017/BioC2017/Day1/Workshops/Microbiome/MicrobiomeWorkflowII.html))
+
+```{r}
+evals <- out.pcoa$values$Eigenvalues
+pcoa_plot.scaled = plot_ordination(ps, out.pcoa, color ="char", shape = "type") +
+  geom_point(size = 3) +
+  coord_fixed(sqrt(evals[2] / evals[1]))
+pcoa_plot.scaled
+```
+
+
+Next, I will demonstrate a **weighted UniFrac PCoA**.  When calculating the distance matrix, this takes into account how many related taxa are shared among each pair of samples using the phylogenetic tree  (which we embedded in the phyloseq object). It then performs the PCoA:
+
+
+```{r}
+out.pcoa <- ordinate(ps, method = "PCoA", distance = "wunifrac")
+wuf_pcoa_plot = plot_ordination(ps, out.pcoa, color ="char", shape = "type") +
+  geom_point(size = 3) 
+wuf_pcoa_plot
+```
+
+The above implies that the taxa in the water and biofilm samples are  more distantly related to those in the rock samples than the taxa from within the different rock samples.  Thus, the ASVs from the different rock types are *different* (based on bray-PCoA) but also *closely related* (based on Unifrac-PCoA). You could do some futher analyses to figure out what those ASVs are (such as ANOSIM) if you were interested. The eigenvalues for this analysis are greater than the previous one (the total percentage variability explained is greater than 60%).
+
+
+Third, I will demonstrate a **non-metric dimensional scaling (NMDS) ordination**. (Note, PCoA is also known as classical metric dimensional scale, MDS). NMDS also attempts to represent distances in a low-dimensional space, but in this case the distances are replaced with ranks, and therefore we won't have an idea of the magnitude of the differences. It also iteratively places the data object on the axes (rather than rotating the axes and keeping the data objects the same) until it finds the best solution. Therefore it will find a unique solution each time you run it. Because of this, we also cannot say anything about the amount of variance explained by the axes.  Instead, we report the stress of the analysis, which is like the "disagreement" between the 2D representation and the actual ranked distances. If this stress is more than 0.2, you don't want to use this analysis:
+
+```{r}
+out.nmds <- ordinate(ps, method = "NMDS", distance = "bray")
+nmds_plot = plot_ordination(ps, out.nmds, color ="char", shape = "type") +
+  geom_point(size = 3) 
+nmds_plot
+```
+
+The NMDS also shows a clear separation between sample types and rock types, and has a very low stress (0.04) indicating that this would also be a robust way of representing these data.
