@@ -157,7 +157,7 @@ Goal: Go over box plots and bar plots in ggplot. Making use of tidyverse data wr
 _This is a cross over lesson with Amplicon lesson 5a_
 
 ***
-# Lesson 8b
+# Lesson 8b (part 1 & 2)
 ### Title: Ordinations II
 **Instructors**: Sarah Hu
 
@@ -165,7 +165,10 @@ _This is a cross over lesson with Amplicon lesson 5a_
 * Data transformations: log-ratio transformations, Jaccard, Euclidean
 * Screeplots, diagnosing how many dimensions are appropriate for visualizing your data
 * PCA, PCoA, NMDS plots (2D and 3D)
+* [Reference for lesson](https://www.frontiersin.org/articles/10.3389/fgene.2020.00310/full)
 
-
+Live lessons in two parts:
+[Lesson 8b.1](https://www.youtube.com/watch?v=lSgwJBPW88k)   
+[Lesson 8b.2](https://www.youtube.com/watch?v=1cMqmKGBP1U)
 
 
